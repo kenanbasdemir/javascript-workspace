@@ -6,7 +6,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getProductList(): string {
-    return this.appService.getProductList();
+  findAll() {
+    this.appService.findAll().subscribe(response =>{
+      return response.data
+    })
   }
 }

@@ -1,16 +1,15 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import ProductList from './productList';
+import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
+import Todo from './todo';
 
 @Injectable()
 export class AppService {
 
-  productList: ProductList
+  constructor(private httpService: HttpService) { }
 
-  constructor(){
-    this.productList = new ProductList()
-  }
-
-  getProductList(): string {
-    return JSON.stringify(this.productList);
+  findAll(): Observable<AxiosResponse<Todo[]>> {
+    return this.httpService.get('https://jsonplaceholder.typicode.com/todos')
   }
 }
