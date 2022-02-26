@@ -11,4 +11,9 @@ export class AppController {
       return response.data
     })
   }
+  
+  @Post()
+  postSample() {
+    return 'OK'
+  }
 }
